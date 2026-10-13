@@ -1,0 +1,16 @@
+/* Тема оформления окна отзывов (Giscus). Лежит рядом с index.html. */
+@import url("https://giscus.app/themes/light.css");
+main{
+  --color-canvas-default:#fff8ee;--color-canvas-subtle:#f6efe6;--color-canvas-overlay:#fff8ee;
+  --color-fg-default:#2e1a0f;--color-fg-muted:#5a3d2b;
+  --color-border-default:#2e1a0f;--color-border-muted:#d6ae82;
+  --color-accent-fg:#b8431a;--color-accent-emphasis:#b8431a;
+  --color-btn-primary-bg:#2e1a0f;--color-btn-primary-hover-bg:#b8431a;--color-btn-primary-text:#fff3de;
+}
+/* Подписи: вместо «комментарий» пишем «отзыв» */
+textarea::placeholder{color:transparent}
+.gsc-comments-count{font-size:0}
+.gsc-comments-count::after{content:"Отзывы";font-size:18px;font-weight:700}
+button.gsc-comment-box-button{font-size:0}
+button.gsc-comment-box-button::after{content:"Отправить отзыв";font-size:14px}
+.gsc-reply-box button.gsc-comment-box-button::after{content:"Ответить"}

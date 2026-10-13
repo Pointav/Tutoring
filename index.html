@@ -198,9 +198,13 @@ addEventListener('scroll',function(){if(!tk){tk=1;requestAnimationFrame(up)}},{p
 </script>
 <script>
 var GISCUS={repo:"Pointav/Tutoring",repoId:"R_kgDOVAMV3g",category:"Отзывы",categoryId:"DIC_kwDOVAMV3s4DIQwK",term:"reviews"};
-(function(){var g=GISCUS;if(!g.repo||!g.repoId||!g.categoryId)return;var s=document.createElement("script");s.src="https://giscus.app/client.js";
-var a={"data-repo":g.repo,"data-repo-id":g.repoId,"data-category":g.category,"data-category-id":g.categoryId,"data-mapping":"specific","data-term":g.term,"data-strict":"0","data-reactions-enabled":"1","data-emit-metadata":"0","data-input-position":"top","data-theme":"light","data-lang":"ru","data-loading":"lazy","crossorigin":"anonymous"};
-for(var k in a)s.setAttribute(k,a[k]);s.async=true;document.getElementById("giscus-box").appendChild(s);var e=document.getElementById("rv-empty"),ok=0,dbg=/debug/.test(location.search);e.textContent="Загружаю отзывы…";
+(function(){var g=GISCUS;if(!g.repo||!g.repoId||!g.categoryId)return;
+var e=document.getElementById("rv-empty"),ok=0,dbg=/debug/.test(location.search);e.textContent="Загружаю отзывы…";
+function load(theme){var s=document.createElement("script");s.src="https://giscus.app/client.js";
+var a={"data-repo":g.repo,"data-repo-id":g.repoId,"data-category":g.category,"data-category-id":g.categoryId,"data-mapping":"specific","data-term":g.term,"data-strict":"0","data-reactions-enabled":"0","data-emit-metadata":"0","data-input-position":"top","data-theme":theme,"data-lang":"ru","data-loading":"lazy","crossorigin":"anonymous"};
+for(var k in a)s.setAttribute(k,a[k]);s.async=true;document.getElementById("giscus-box").appendChild(s)}
+var css=new URL("giscus-theme.css",location.href).href;
+fetch(css,{method:"HEAD"}).then(function(r){load(r.ok&&css.indexOf("https://")===0?css:"light")}).catch(function(){load("light")});
 window.addEventListener("message",function(ev){if(ev.origin!=="https://giscus.app")return;var d=ev.data&&ev.data.giscus;if(!d)return;ok=1;
 if(d.error){e.textContent=dbg?"Ошибка Giscus: "+d.error:"Отзывы временно недоступны. Напишите мне в Telegram.";e.style.display="block"}else{e.style.display="none"}});
 setTimeout(function(){if(!ok){e.textContent=dbg?"Giscus не ответил: скрипт giscus.app не загрузился (блокировщик, сеть или недоступен giscus.app).":"Не удалось загрузить отзывы: возможно, GitHub или giscus.app сейчас недоступны в вашей сети. Попробуйте позже или напишите мне в Telegram.";e.style.display="block"}},10000)})();
